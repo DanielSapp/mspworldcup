@@ -1,7 +1,9 @@
 {
   "promotion": {
     "name": "IRONSCALES Champions Cup 2026",
-    "tagline": "Defenders of the Inbox"
+    "tagline": "Defenders of the Inbox",
+    "secured_count": 0,
+    "secured_goal": 5000
   },
   "teams": [
     { "domain": "ironscales.com", "name": "IRONSCALES", "logo": "https://ironscales.com/hs-fs/hubfs/logo_white.png?width=300&name=logo_white.png" }
