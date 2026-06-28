@@ -72,7 +72,6 @@
   </style>
 </head>
 <body>
-
 <header class="hero">
   <p class="hero-eyebrow">⚽ IRONSCALES · Security Champions</p>
   <span class="hero-cup">🏆</span>
@@ -84,9 +83,7 @@
     <input type="text" id="search" placeholder="Find your team…" oninput="filterTeams(this.value)" autocomplete="off">
   </div>
 </header>
-
 <main class="page" id="page"></main>
-
 <div class="modal-overlay" id="modal" onclick="onOverlayClick(event)">
   <button class="btn-close" onclick="closeModal()">✕</button>
   <div class="modal-box">
@@ -97,16 +94,12 @@
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
-
 <footer class="footer">
   Updated daily · All clients are Champions · Powered by <em>IRONSCALES</em>
 </footer>
-
 <script>
 'use strict';
-
 const PALETTES = [
   { bg: 'linear-gradient(145deg,#7a5000,#c9a84c,#f5d76e,#b8860b)', glow: 'rgba(201,168,76,0.55)'  },
   { bg: 'linear-gradient(145deg,#0c1a4d,#1e3a8a,#3b82f6,#1d4ed8)', glow: 'rgba(59,130,246,0.55)'  },
@@ -119,19 +112,15 @@ const PALETTES = [
   { bg: 'linear-gradient(145deg,#1a0033,#6b21a8,#a855f7,#7e22ce)', glow: 'rgba(168,85,247,0.55)'  },
   { bg: 'linear-gradient(145deg,#0c2340,#1e4976,#0ea5e9,#0369a1)', glow: 'rgba(14,165,233,0.55)'  },
 ];
-
 function hash(str) {
   let h = 0;
   for (let i = 0; i < str.length; i++) h = (Math.imul(31, h) + str.charCodeAt(i)) | 0;
   return Math.abs(h);
 }
-
 function getPalette(domain) { return PALETTES[hash(domain) % PALETTES.length]; }
-
 function getInitials(name) {
   return (name || '').split(/[\s\-\.]+/).filter(Boolean).map(w => w[0]).join('').toUpperCase().slice(0, 3) || '??';
 }
-
 function buildGroups(teams) {
   const sorted = [...teams].sort((a, b) => (a.domain || '').localeCompare(b.domain));
   const groups = {};
@@ -142,91 +131,63 @@ function buildGroups(teams) {
   });
   return groups;
 }
-
 function buildCard(team) {
-  const p   = getPalette(team.domain);
+  const p = getPalette(team.domain);
   const ini = getInitials(team.name || team.domain);
-
+  const logoSrc = team.logo || ('https://logo.clearbit.com/' + team.domain);
   const card = document.createElement('div');
   card.className = 'card';
-  card.style.cssText = `background:${p.bg};--glow:${p.glow};`;
-  card.innerHTML = `
-    <div class="card-holo"></div>
-    <div class="card-light"></div>
-    <div class="card-body">
-      <div class="card-logo-area">
-        <img class="card-logo"
-          src="https://logo.clearbit.com/${team.domain}"
-          alt="${team.name || team.domain}"
-          loading="lazy"
-          onerror="this.src='https://www.google.com/s2/favicons?domain=${team.domain}&sz=128';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='flex';}">
-        <div class="card-initials" style="display:none">${ini}</div>
-      </div>
-      <div class="card-name-bar">
-        <div class="card-name">${(team.name || team.domain).toUpperCase()}</div>
-      </div>
-    </div>`;
-
+  card.style.cssText = 'background:' + p.bg + ';--glow:' + p.glow + ';';
+  card.innerHTML =
+    '<div class="card-holo"></div>' +
+    '<div class="card-light"></div>' +
+    '<div class="card-body">' +
+      '<div class="card-logo-area">' +
+        '<img class="card-logo" src="' + logoSrc + '" alt="' + (team.name || team.domain) + '" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">' +
+        '<div class="card-initials" style="display:none">' + ini + '</div>' +
+      '</div>' +
+      '<div class="card-name-bar"><div class="card-name">' + (team.name || team.domain).toUpperCase() + '</div></div>' +
+    '</div>';
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width;
-    const y = (e.clientY - r.top)  / r.height;
-    card.style.transform = `perspective(700px) rotateY(${(x - 0.5) * 20}deg) rotateX(${(0.5 - y) * 20}deg) scale(1.06)`;
-    card.style.boxShadow = `0 24px 64px rgba(0,0,0,0.7), 0 0 36px ${p.glow}`;
-    card.querySelector('.card-light').style.setProperty('--lx', `${x * 100}%`);
-    card.querySelector('.card-light').style.setProperty('--ly', `${y * 100}%`);
+    const y = (e.clientY - r.top) / r.height;
+    card.style.transform = 'perspective(700px) rotateY(' + (x - 0.5) * 20 + 'deg) rotateX(' + (0.5 - y) * 20 + 'deg) scale(1.06)';
+    card.style.boxShadow = '0 24px 64px rgba(0,0,0,0.7), 0 0 36px ' + p.glow;
+    card.querySelector('.card-light').style.setProperty('--lx', (x * 100) + '%');
+    card.querySelector('.card-light').style.setProperty('--ly', (y * 100) + '%');
   });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-    card.style.boxShadow = '';
-  });
-
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; card.style.boxShadow = ''; });
   return card;
 }
-
 let activeTeam = null;
-
 function openModal(team) {
   activeTeam = team;
   const host = document.getElementById('modal-host');
   host.innerHTML = '';
   host.appendChild(buildCard(team));
   document.getElementById('modal').classList.add('open');
-  history.replaceState(null, '', `${location.pathname}#${team.domain}`);
+  history.replaceState(null, '', location.pathname + '#' + team.domain);
 }
-
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
   history.replaceState(null, '', location.pathname);
   activeTeam = null;
 }
-
-function onOverlayClick(e) {
-  if (e.target === document.getElementById('modal')) closeModal();
-}
-
+function onOverlayClick(e) { if (e.target === document.getElementById('modal')) closeModal(); }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
 function copyLink() {
   if (!activeTeam) return;
-  const url = `${location.origin}${location.pathname}#${activeTeam.domain}`;
-  navigator.clipboard.writeText(url)
-    .then(() => toast('🔗 Link copied to clipboard!'))
-    .catch(() => toast('Copy: ' + url));
+  const url = location.origin + location.pathname + '#' + activeTeam.domain;
+  navigator.clipboard.writeText(url).then(() => toast('🔗 Link copied!')).catch(() => toast('Copy: ' + url));
 }
-
 function shareLinkedIn() {
   if (!activeTeam) return;
   const name = activeTeam.name || activeTeam.domain;
-  const url  = encodeURIComponent(`${location.origin}${location.pathname}#${activeTeam.domain}`);
-  const text = encodeURIComponent(
-    `🏆 ${name} is officially in the IRONSCALES Champions Cup 2026!\n` +
-    `Proud to be defending the inbox. #EmailSecurity #IRONSCALES #ChampionsCup`
-  );
-  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&summary=${text}`, '_blank');
+  const url = encodeURIComponent(location.origin + location.pathname + '#' + activeTeam.domain);
+  const text = encodeURIComponent('🏆 ' + name + ' is officially in the IRONSCALES Champions Cup 2026!\nProud to be defending the inbox. #EmailSecurity #IRONSCALES #ChampionsCup');
+  window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url + '&summary=' + text, '_blank');
 }
-
 let toastTimer;
 function toast(msg) {
   const el = document.getElementById('toast');
@@ -235,7 +196,6 @@ function toast(msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
 }
-
 function filterTeams(q) {
   q = q.toLowerCase().trim();
   document.querySelectorAll('.card-wrap').forEach(w => {
@@ -247,59 +207,41 @@ function filterTeams(q) {
     b.style.display = any ? '' : 'none';
   });
 }
-
 async function init() {
-  const res  = await fetch(`./teams.json?v=${Date.now()}`);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const data  = await res.json();
+  const res = await fetch('./teams.json?v=' + Date.now());
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const data = await res.json();
   const teams = data.teams || [];
-
-  document.getElementById('hero-pill').textContent =
-    `${teams.length} Champion${teams.length !== 1 ? 's' : ''} · Defending the Inbox`;
-
+  document.getElementById('hero-pill').textContent = teams.length + ' Champion' + (teams.length !== 1 ? 's' : '') + ' · Defending the Inbox';
   const groups = buildGroups(teams);
-  const page   = document.getElementById('page');
+  const page = document.getElementById('page');
   page.innerHTML = '';
-
   Object.entries(groups).forEach(([letter, gTeams]) => {
     const block = document.createElement('div');
     block.className = 'group-block';
-
     const header = document.createElement('div');
     header.className = 'group-header';
-    header.innerHTML = `
-      <span class="group-letter">Group ${letter}</span>
-      <div class="group-rule"></div>
-      <span class="group-count">${gTeams.length} Teams</span>`;
+    header.innerHTML = '<span class="group-letter">Group ' + letter + '</span><div class="group-rule"></div><span class="group-count">' + gTeams.length + ' Teams</span>';
     block.appendChild(header);
-
     const row = document.createElement('div');
     row.className = 'group-teams';
-
     gTeams.forEach(team => {
       const wrap = document.createElement('div');
       wrap.className = 'card-wrap';
       wrap.dataset.domain = team.domain;
-      wrap.dataset.name   = team.name || '';
+      wrap.dataset.name = team.name || '';
       wrap.appendChild(buildCard(team));
       wrap.addEventListener('click', () => openModal(team));
       row.appendChild(wrap);
     });
-
     block.appendChild(row);
     page.appendChild(block);
   });
-
   const anchor = decodeURIComponent(location.hash.slice(1));
-  if (anchor) {
-    const team = teams.find(t => t.domain === anchor);
-    if (team) openModal(team);
-  }
+  if (anchor) { const team = teams.find(t => t.domain === anchor); if (team) openModal(team); }
 }
-
 init().catch(err => {
-  document.getElementById('page').innerHTML =
-    `<div class="error-msg">⚠️ Could not load teams.json<br><small>${err.message}</small></div>`;
+  document.getElementById('page').innerHTML = '<div class="error-msg">⚠️ Could not load teams.json<br><small>' + err.message + '</small></div>';
   document.getElementById('hero-pill').textContent = 'Error loading teams';
 });
 </script>
