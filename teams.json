@@ -1,0 +1,88 @@
+{
+  "promotion": {
+    "name": "IRONSCALES Champions Cup 2026",
+    "tagline": "Defenders of the Inbox"
+  },
+  "teams": [
+    {
+      "domain": "google.com",
+      "name": "Google",
+      "industry": "TECH",
+      "stats": [
+        { "val": "100", "lbl": "Shield" },
+        { "val": "0",   "lbl": "Breaches" },
+        { "val": "∞",   "lbl": "Uptime" }
+      ]
+    },
+    {
+      "domain": "microsoft.com",
+      "name": "Microsoft",
+      "industry": "TECH",
+      "stats": [
+        { "val": "100", "lbl": "Shield" },
+        { "val": "0",   "lbl": "Breaches" },
+        { "val": "∞",   "lbl": "Uptime" }
+      ]
+    },
+    {
+      "domain": "amazon.com",
+      "name": "Amazon",
+      "industry": "RTL",
+      "stats": [
+        { "val": "100", "lbl": "Shield" },
+        { "val": "0",   "lbl": "Breaches" },
+        { "val": "∞",   "lbl": "Uptime" }
+      ]
+    },
+    {
+      "domain": "apple.com",
+      "name": "Apple",
+      "industry": "TECH",
+      "stats": [
+        { "val": "100", "lbl": "Shield" },
+        { "val": "0",   "lbl": "Breaches" },
+        { "val": "∞",   "lbl": "Uptime" }
+      ]
+    },
+    {
+      "domain": "meta.com",
+      "name": "Meta",
+      "industry": "TECH",
+      "stats": [
+        { "val": "100", "lbl": "Shield" },
+        { "val": "0",   "lbl": "Breaches" },
+        { "val": "∞",   "lbl": "Uptime" }
+      ]
+    },
+    {
+      "domain": "netflix.com",
+      "name": "Netflix",
+      "industry": "ENT",
+      "stats": [
+        { "val": "100", "lbl": "Shield" },
+        { "val": "0",   "lbl": "Breaches" },
+        { "val": "∞",   "lbl": "Uptime" }
+      ]
+    },
+    {
+      "domain": "salesforce.com",
+      "name": "Salesforce",
+      "industry": "SVC",
+      "stats": [
+        { "val": "100", "lbl": "Shield" },
+        { "val": "0",   "lbl": "Breaches" },
+        { "val": "∞",   "lbl": "Uptime" }
+      ]
+    },
+    {
+      "domain": "stripe.com",
+      "name": "Stripe",
+      "industry": "FIN",
+      "stats": [
+        { "val": "100", "lbl": "Shield" },
+        { "val": "0",   "lbl": "Breaches" },
+        { "val": "∞",   "lbl": "Uptime" }
+      ]
+    }
+  ]
+}

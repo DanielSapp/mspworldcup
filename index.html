@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRONSCALES Champions Cup 2026</title>
+  <meta name="description" content="The World Cup of Email Security — proud defenders of the inbox.">
+  <meta property="og:title" content="IRONSCALES Champions Cup 2026">
+  <meta property="og:description" content="Join us as we celebrate the defenders of the inbox.">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold:       #c9a84c;
+      --gold-light: #f5d76e;
+      --dark:       #07090f;
+      --surface:    #0d1120;
+      --surface2:   #141928;
+    }
+
+    body {
+      background: var(--dark);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 56px 24px 48px;
+      text-align: center;
+      background: radial-gradient(ellipse 120% 80% at 50% -10%, #1a2c5a 0%, #070912 60%);
+      border-bottom: 1px solid rgba(201,168,76,0.35);
+    }
+
+    /* stadium light rays */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 1000px; height: 500px;
+      background: conic-gradient(
+        from -8deg at 50% 0%,
+        transparent 18%, rgba(201,168,76,0.07) 23%, transparent 28%,
+        transparent 38%, rgba(201,168,76,0.05) 43%, transparent 48%,
+        transparent 57%, rgba(201,168,76,0.06) 62%, transparent 67%,
+        transparent 76%, rgba(201,168,76,0.04) 81%, transparent 86%
+      );
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .hero-cup {
+      display: block;
+      font-size: 72px;
+      margin-bottom: 4px;
+      filter: drop-shadow(0 0 24px rgba(201,168,76,0.55));
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 9vw, 90px);
+      letter-spacing: 9px;
+      line-height: 0.95;
+      background: linear-gradient(135deg, #7a5000 0%, #c9a84c 25%, #f5d76e 50%, #c9a84c 75%, #7a5000 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .hero-sub {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-top: 12px;
+    }
+
+    .hero-pill {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 7px 22px;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 40px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,168,76,0.07);
+    }
+
+    /* ── SEARCH ─────────────────────────────────────── */
+    .search-wrap {
+      max-width: 380px;
+      margin: 28px auto 0;
+      position: relative;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 10px;
+      padding: 11px 18px 11px 42px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .search-wrap input:focus {
+      border-color: var(--gold);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .search-wrap input::placeholder { color: rgba(255,255,255,0.3); }
+
+    .search-icon {
+      position: absolute;
+      left: 14px; top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.4;
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    /* ── GROUPS ─────────────────────────────────────── */
+    .page {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 44px 24px 80px;
+    }
+
+    .group-block { margin-bottom: 52px; }
+
+    .group-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .group-letter {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .group-rule {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(201,168,76,0.35) 0%, transparent 100%);
+    }
+
+    .group-count {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.28);
+      text-transform: uppercase;
+    }
+
+    .group-teams {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    /* ── CARD ───────────────────────────────────────── */
+    .card-wrap {
+      width: 188px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .card-wrap.hidden { display: none !important; }
+
+    .card {
+      width: 188px;
+      height: 264px;
+      position: relative;
+      border-radius: 14px;
+      transform-style: preserve-3d;
+      transition: transform 0.07s ease-out, box-shadow 0.3s ease;
+      will-change: transform;
+    }
+
+    /* Glow border on hover (set per-card via --glow CSS var) */
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 15.5px;
+      background: var(--glow, rgba(255,255,255,0.2));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .card:hover::after { opacity: 1; }
+
+    /* Holographic rainbow sweep */
+    .card-holo {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: linear-gradient(
+        115deg,
+        transparent 20%,
+        rgba(255,220,100,0.07) 28%,
+        rgba(100,200,255,0.07) 35%,
+        rgba(180,100,255,0.06) 42%,
+        transparent 55%
+      );
+      background-size: 200% 100%;
+      background-position-x: -100%;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .card:hover .card-holo {
+      opacity: 1;
+      animation: holo 2.5s linear infinite;
+    }
+
+    @keyframes holo {
+      0%   { background-position-x: -100%; }
+      100% { background-position-x: 200%; }
+    }
+
+    /* Mouse-following spotlight */
+    .card-light {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: radial-gradient(
+        circle at var(--lx, 50%) var(--ly, 50%),
+        rgba(255,255,255,0.18) 0%,
+        transparent 65%
+      );
+      opacity: 0;
+      transition: opacity 0.25s;
+      pointer-events: none;
+    }
+
+    .card:hover .card-light { opacity: 1; }
+
+    /* Card body */
+    .card-body {
+      position: absolute;
+      inset: 0;
+      padding: 11px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* subtle inner noise texture */
+    .card-body::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-rating {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      line-height: 1;
+      color: rgba(255,255,255,0.95);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+
+    .card-pos {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.82);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+
+    .card-icon {
+      font-size: 26px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+    }
+
+    .card-logo-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-logo {
+      max-width: 78px;
+      max-height: 78px;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.7));
+      border-radius: 6px;
+    }
+
+    .card-initials {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.92);
+      background: rgba(0,0,0,0.32);
+      border: 2px solid rgba(255,255,255,0.28);
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+    }
+
+    .card-name-bar {
+      position: relative;
+      z-index: 2;
+      background: rgba(0,0,0,0.38);
+      margin: 0 -11px;
+      padding: 5px 11px;
+    }
+
+    .card-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.95);
+      text-align: center;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      padding-top: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-val {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: rgba(255,255,255,0.95);
+    }
+
+    .stat-lbl {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.58);
+    }
+
+    /* ── MODAL ───────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(10px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      position: relative;
+    }
+
+    .modal-card-host {
+      width: 265px;
+      height: 372px;
+      position: relative;
+    }
+
+    /* larger card in modal */
+    .modal-card-host .card {
+      width: 265px;
+      height: 372px;
+    }
+
+    .modal-card-host .card-rating  { font-size: 56px; }
+    .modal-card-host .card-pos     { font-size: 16px; }
+    .modal-card-host .card-icon    { font-size: 36px; }
+    .modal-card-host .card-logo    { max-width: 110px; max-height: 110px; }
+    .modal-card-host .card-initials { width: 100px; height: 100px; font-size: 36px; }
+    .modal-card-host .card-name    { font-size: 22px; }
+    .modal-card-host .card-name-bar { margin: 0 -14px; padding: 6px 14px; }
+    .modal-card-host .card-body    { padding: 14px; border-radius: 16px; }
+    .modal-card-host .card         { border-radius: 16px; }
+    .modal-card-host .card::after  { border-radius: 17.5px; }
+    .modal-card-host .card-holo,
+    .modal-card-host .card-light   { border-radius: 16px; }
+    .modal-card-host .stat-val     { font-size: 18px; }
+    .modal-card-host .stat-lbl     { font-size: 10px; }
+
+    .modal-btns {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 9px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: transform 0.1s, opacity 0.2s;
+    }
+
+    .btn:hover   { opacity: 0.88; }
+    .btn:active  { transform: scale(0.95); }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #b8860b, #c9a84c, #f5d76e, #c9a84c);
+      color: #0a0a0a;
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    .btn-close {
+      position: fixed;
+      top: 20px; right: 20px;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .btn-close:hover { background: rgba(255,255,255,0.16); }
+
+    /* ── TOAST ───────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 30px; left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: rgba(12,18,36,0.97);
+      border: 1px solid var(--gold);
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 10px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 600;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    .footer {
+      text-align: center;
+      padding: 28px;
+      color: rgba(255,255,255,0.22);
+      font-size: 12px;
+      letter-spacing: 1px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer em { color: var(--gold); font-style: normal; }
+
+    /* ── ERROR ───────────────────────────────────────── */
+    .error-msg {
+      text-align: center;
+      padding: 60px 24px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px;
+      color: #ef4444;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 480px) {
+      .card-wrap, .card { width: 155px; }
+      .card             { height: 218px; }
+      .card-rating      { font-size: 32px; }
+      .card-icon        { font-size: 20px; }
+      .card-name        { font-size: 13px; }
+      .stat-val         { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ HERO -->
+<header class="hero">
+  <p class="hero-eyebrow">⚽ IRONSCALES · Security Champions</p>
+  <span class="hero-cup">🏆</span>
+  <h1 class="hero-title">Champions Cup 2026</h1>
+  <p class="hero-sub">Defenders of the Inbox · World Cup Edition</p>
+  <div class="hero-pill" id="hero-pill">Loading…</div>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" placeholder="Find your team…" oninput="filterTeams(this.value)" autocomplete="off">
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════ GROUPS -->
+<main class="page" id="page"></main>
+
+<!-- ═══════════════════════════════════════════ MODAL -->
+<div class="modal-overlay" id="modal" onclick="onOverlayClick(event)">
+  <button class="btn-close" onclick="closeModal()">✕</button>
+  <div class="modal-box">
+    <div class="modal-card-host" id="modal-host"></div>
+    <div class="modal-btns">
+      <button class="btn btn-gold" onclick="copyLink()">🔗 Copy Link</button>
+      <button class="btn btn-ghost" onclick="shareLinkedIn()">in&nbsp; Share on LinkedIn</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════════════════════════════════ FOOTER -->
+<footer class="footer">
+  Updated daily · All clients are Champions · Powered by <em>IRONSCALES</em>
+</footer>
+
+<script>
+'use strict';
+
+/* ── Palettes ────────────────────────────────────────── */
+const PALETTES = [
+  { bg: 'linear-gradient(145deg,#7a5000,#c9a84c,#f5d76e,#b8860b)', glow: 'rgba(201,168,76,0.55)'  },
+  { bg: 'linear-gradient(145deg,#0c1a4d,#1e3a8a,#3b82f6,#1d4ed8)', glow: 'rgba(59,130,246,0.55)'  },
+  { bg: 'linear-gradient(145deg,#3d0000,#991b1b,#ef4444,#b91c1c)', glow: 'rgba(239,68,68,0.55)'   },
+  { bg: 'linear-gradient(145deg,#022c22,#065f46,#10b981,#047857)', glow: 'rgba(16,185,129,0.55)'  },
+  { bg: 'linear-gradient(145deg,#2d1b69,#553c9a,#8b5cf6,#6d28d9)', glow: 'rgba(139,92,246,0.55)'  },
+  { bg: 'linear-gradient(145deg,#042f2e,#0f766e,#14b8a6,#0d9488)', glow: 'rgba(20,184,166,0.55)'  },
+  { bg: 'linear-gradient(145deg,#431407,#9a3412,#f97316,#c2410c)', glow: 'rgba(249,115,22,0.55)'  },
+  { bg: 'linear-gradient(145deg,#1e1b4b,#3730a3,#6366f1,#4338ca)', glow: 'rgba(99,102,241,0.55)'  },
+  { bg: 'linear-gradient(145deg,#1a0033,#6b21a8,#a855f7,#7e22ce)', glow: 'rgba(168,85,247,0.55)'  },
+  { bg: 'linear-gradient(145deg,#0c2340,#1e4976,#0ea5e9,#0369a1)', glow: 'rgba(14,165,233,0.55)'  },
+];
+
+const POSITIONS = ['TECH','FIN','HLTH','RTL','EDU','MFG','GOV','ENT','SVC','OPS'];
+
+/* ── Deterministic hash ──────────────────────────────── */
+function hash(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) h = (Math.imul(31, h) + str.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
+
+function getPalette(domain) { return PALETTES[hash(domain) % PALETTES.length]; }
+
+function getPos(domain) { return POSITIONS[hash(domain + '_pos') % POSITIONS.length]; }
+
+function getRating(domain) { return 85 + (hash(domain + '_rating') % 15); } // 85–99
+
+function getInitials(name) {
+  return (name || '').split(/[\s\-\.]+/).filter(Boolean).map(w => w[0]).join('').toUpperCase().slice(0, 3) || '??';
+}
+
+/* ── Group assignment ────────────────────────────────── */
+function buildGroups(teams) {
+  const sorted = [...teams].sort((a, b) => (a.domain || '').localeCompare(b.domain));
+  const groups = {};
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  sorted.forEach((t, i) => {
+    const g = letters[Math.floor(i / 4)] || 'Z';
+    (groups[g] = groups[g] || []).push(t);
+  });
+  return groups;
+}
+
+/* ── Build one card element ──────────────────────────── */
+function buildCard(team) {
+  const p   = getPalette(team.domain);
+  const pos = team.industry || getPos(team.domain);
+  const rat = team.rating   || getRating(team.domain);
+  const ini = getInitials(team.name || team.domain);
+
+  const stats = team.stats || [
+    { val: '100', lbl: 'Shield'   },
+    { val: '0',   lbl: 'Breaches' },
+    { val: '∞',   lbl: 'Uptime'   },
+  ];
+
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.style.cssText = `background:${p.bg};--glow:${p.glow};`;
+  card.innerHTML = `
+    <div class="card-holo"></div>
+    <div class="card-light"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-rating">${rat}</div>
+          <div class="card-pos">${pos}</div>
+        </div>
+        <div class="card-icon">🛡️</div>
+      </div>
+      <div class="card-logo-area">
+        <img class="card-logo"
+          src="https://logo.clearbit.com/${team.domain}?size=160"
+          alt="${team.name || team.domain}"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="card-initials" style="display:none">${ini}</div>
+      </div>
+      <div class="card-name-bar">
+        <div class="card-name">${(team.name || team.domain).toUpperCase()}</div>
+      </div>
+      <div class="card-stats">
+        ${stats.map(s => `
+          <div class="stat">
+            <div class="stat-val">${s.val}</div>
+            <div class="stat-lbl">${s.lbl}</div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+
+  /* 3-D tilt + spotlight */
+  card.addEventListener('mousemove', e => {
+    const r  = card.getBoundingClientRect();
+    const x  = (e.clientX - r.left) / r.width;
+    const y  = (e.clientY - r.top)  / r.height;
+    card.style.transform = `perspective(700px) rotateY(${(x - 0.5) * 20}deg) rotateX(${(0.5 - y) * 20}deg) scale(1.06)`;
+    card.style.boxShadow = `0 24px 64px rgba(0,0,0,0.7), 0 0 36px ${p.glow}`;
+    card.querySelector('.card-light').style.setProperty('--lx', `${x * 100}%`);
+    card.querySelector('.card-light').style.setProperty('--ly', `${y * 100}%`);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.boxShadow = '';
+  });
+
+  return card;
+}
+
+/* ── Modal state ─────────────────────────────────────── */
+let activeTeam = null;
+
+function openModal(team) {
+  activeTeam = team;
+  const host = document.getElementById('modal-host');
+  host.innerHTML = '';
+  const card = buildCard(team);
+  host.appendChild(card);
+  document.getElementById('modal').classList.add('open');
+  history.replaceState(null, '', `${location.pathname}#${team.domain}`);
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  history.replaceState(null, '', location.pathname);
+  activeTeam = null;
+}
+
+function onOverlayClick(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ── Share actions ───────────────────────────────────── */
+function copyLink() {
+  if (!activeTeam) return;
+  const url = `${location.origin}${location.pathname}#${activeTeam.domain}`;
+  navigator.clipboard.writeText(url)
+    .then(() => toast('🔗 Link copied to clipboard!'))
+    .catch(() => toast('Copy: ' + url));
+}
+
+function shareLinkedIn() {
+  if (!activeTeam) return;
+  const name = activeTeam.name || activeTeam.domain;
+  const url  = encodeURIComponent(`${location.origin}${location.pathname}#${activeTeam.domain}`);
+  const text = encodeURIComponent(
+    `🏆 ${name} is officially in the IRONSCALES Champions Cup 2026!\n` +
+    `Proud to be defending the inbox. #EmailSecurity #IRONSCALES #ChampionsCup`
+  );
+  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&summary=${text}`, '_blank');
+}
+
+/* ── Toast ───────────────────────────────────────────── */
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+/* ── Search / filter ─────────────────────────────────── */
+function filterTeams(q) {
+  q = q.toLowerCase().trim();
+  document.querySelectorAll('.card-wrap').forEach(w => {
+    const hit = !q || w.dataset.domain.includes(q) || (w.dataset.name || '').toLowerCase().includes(q);
+    w.classList.toggle('hidden', !hit);
+  });
+  document.querySelectorAll('.group-block').forEach(b => {
+    const any = [...b.querySelectorAll('.card-wrap')].some(w => !w.classList.contains('hidden'));
+    b.style.display = any ? '' : 'none';
+  });
+}
+
+/* ── Render ──────────────────────────────────────────── */
+async function init() {
+  const bust = Date.now(); // cache-bust so updates show immediately
+  const res  = await fetch(`./teams.json?v=${bust}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data  = await res.json();
+  const teams = data.teams || [];
+
+  document.getElementById('hero-pill').textContent =
+    `${teams.length} Champion${teams.length !== 1 ? 's' : ''} · Defending the Inbox`;
+
+  const groups = buildGroups(teams);
+  const page   = document.getElementById('page');
+  page.innerHTML = '';
+
+  Object.entries(groups).forEach(([letter, gTeams]) => {
+    const block = document.createElement('div');
+    block.className = 'group-block';
+
+    const header = document.createElement('div');
+    header.className = 'group-header';
+    header.innerHTML = `
+      <span class="group-letter">Group ${letter}</span>
+      <div class="group-rule"></div>
+      <span class="group-count">${gTeams.length} Teams</span>`;
+    block.appendChild(header);
+
+    const row = document.createElement('div');
+    row.className = 'group-teams';
+
+    gTeams.forEach(team => {
+      const wrap = document.createElement('div');
+      wrap.className = 'card-wrap';
+      wrap.dataset.domain = team.domain;
+      wrap.dataset.name   = team.name || '';
+      wrap.appendChild(buildCard(team));
+      wrap.addEventListener('click', () => openModal(team));
+      row.appendChild(wrap);
+    });
+
+    block.appendChild(row);
+    page.appendChild(block);
+  });
+
+  /* Deep-link: open modal if URL hash matches a team */
+  const anchor = decodeURIComponent(location.hash.slice(1));
+  if (anchor) {
+    const team = teams.find(t => t.domain === anchor);
+    if (team) openModal(team);
+  }
+}
+
+init().catch(err => {
+  document.getElementById('page').innerHTML =
+    `<div class="error-msg">⚠️ Could not load teams.json<br><small>${err.message}</small><br><br>
+     Make sure teams.json is in the same folder as index.html.</div>`;
+  document.getElementById('hero-pill').textContent = 'Error loading teams';
+});
+</script>
+</body>
+</html>
