@@ -4,13 +4,6 @@
     "tagline": "Defenders of the Inbox"
   },
   "teams": [
-    { "domain": "google.com",      "name": "Google"      },
-    { "domain": "microsoft.com",   "name": "Microsoft"   },
-    { "domain": "amazon.com",      "name": "Amazon"      },
-    { "domain": "apple.com",       "name": "Apple"       },
-    { "domain": "meta.com",        "name": "Meta"        },
-    { "domain": "netflix.com",     "name": "Netflix"     },
-    { "domain": "salesforce.com",  "name": "Salesforce"  },
-    { "domain": "stripe.com",      "name": "Stripe"      }
+    { "domain": "google.com", "name": "Google" }
   ]
 }
