@@ -4,6 +4,6 @@
     "tagline": "Defenders of the Inbox"
   },
   "teams": [
-    { "domain": "zteksolutions.com", "name": "Ztek" }
+    { "domain": "zteksolutions.com", "name": "Ztek", "logo": "https://zteksolutions.com/wp-content/uploads/2023/07/logo-nav.png" }
   ]
 }
