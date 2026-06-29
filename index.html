@@ -715,8 +715,10 @@ function openModal(team, logoSrc){
   document.getElementById('modal-name').textContent = (team.name||team.domain).toUpperCase();
   document.getElementById('modal-domain').textContent = team.domain;
   const shareUrl = location.origin+location.pathname+'#'+team.domain;
+  const companyName = team.name || team.domain;
+  const liText = `🏆 ${companyName} is an IRONSCALES Champion!\n\nWe protect our clients’ inboxes from phishing, business email compromise, and account takeover — powered by AI that fights back.\n\nProud to be part of the IRONSCALES Champions Cup 2026. ⚽\n\n#IRONSCALES #EmailSecurity #CyberSecurity #MSP\n\n${shareUrl}`;
   document.getElementById('modal-linkedin').href =
-    'https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(shareUrl);
+    'https://www.linkedin.com/feed/?shareActive=true&text='+encodeURIComponent(liText);
   document.getElementById('modal').classList.add('open');
   history.replaceState(null,'','#'+team.domain);
 }
