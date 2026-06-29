@@ -554,7 +554,7 @@ function secRating(domain){
 function secStats(domain){
   const h = hashStr(domain);
   const base = [97,96,98,95,99,97];
-  const labels = [['PHI','BEC','ATO'],['MAL','SAT','DMA']];
+  const labels = [['PAC','SHO','PAS'],['DRI','DEF','PHY']];
   return {
     left:  labels[0].map((l,i)=>({lbl:l, val: Math.min(99, base[i]   - (h>>(i*4)&3))})),
     right: labels[1].map((l,i)=>({lbl:l, val: Math.min(99, base[i+3] - (h>>(i*4+12)&3))}))
@@ -750,7 +750,7 @@ function renderGroups(teams){
     block.className = 'group-block';
     const title = document.createElement('div');
     title.className = 'group-title';
-    title.textContent = 'Group '+groupLetter+' | '+chunk.length+' Champion'+(chunk.length>1?'s':'');
+    title.textContent = 'Group '+groupLetter;
     const cards = document.createElement('div');
     cards.className = 'group-cards';
     chunk.forEach(t=> cards.appendChild(buildCard(t)));
