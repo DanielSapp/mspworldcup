@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IRONSCALES Champions Cup 2026</title>
 <meta property="og:title" content="IRONSCALES Champions Cup 2026">
-<meta property="og:description" content="Defenders of the Inbox â join the pitch.">
+<meta property="og:description" content="Defenders of the Inbox — join the pitch.">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -18,7 +18,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ââ HERO ââ */
+/* ── HERO ── */
 .hero{
   position:relative;
   overflow:hidden;
@@ -62,7 +62,7 @@ body{
   margin-top:8px;
 }
 
-/* ââ COUNTER ââ */
+/* ── COUNTER ── */
 .counter-section{
   background:#0b0e1a;
   border-bottom:1px solid rgba(201,168,76,0.2);
@@ -111,7 +111,7 @@ body{
   text-transform:uppercase;
 }
 
-/* ââ SEARCH ââ */
+/* ── SEARCH ── */
 .search-wrap{
   padding:20px;
   text-align:center;
@@ -131,7 +131,7 @@ body{
 .search-input:focus{border-color:#f5d76e;}
 .search-input::placeholder{color:#445;}
 
-/* ââ GROUPS ââ */
+/* ── GROUPS ── */
 .groups-container{
   max-width:1400px;
   margin:0 auto;
@@ -149,7 +149,7 @@ body{
 }
 .group-cards{display:flex;flex-wrap:wrap;gap:22px;}
 
-/* ââ FIFA UT CARD ââ */
+/* ── FIFA UT CARD ── */
 .card-wrap{perspective:900px;}
 
 .card{
@@ -163,7 +163,7 @@ body{
   transition:transform .12s ease, box-shadow .12s ease;
   box-shadow:0 8px 32px rgba(0,0,0,.7),0 0 20px rgba(201,168,76,.25);
 
-  /* Gold gradient â FIFA UT feel */
+  /* Gold gradient — FIFA UT feel */
   background:
     linear-gradient(160deg,
       #5a3e00 0%,
@@ -176,7 +176,7 @@ body{
     );
 }
 
-/* Diagonal dark stripe â the signature FUT look */
+/* Diagonal dark stripe — the signature FUT look */
 .card::before{
   content:'';
   position:absolute;
@@ -366,7 +366,7 @@ body{
   text-transform:uppercase;
 }
 
-/* ââ MODAL ââ */
+/* ── MODAL ── */
 .modal-overlay{
   display:none;
   position:fixed;inset:0;
@@ -444,7 +444,7 @@ body{
 .btn-linkedin{background:#0A66C2;color:#fff;}
 .btn-copy{background:#1a2035;color:#f5d76e;border:1px solid rgba(201,168,76,.3);}
 
-/* ââ FOOTER ââ */
+/* ── FOOTER ── */
 .footer{
   text-align:center;
   padding:24px;
@@ -455,7 +455,7 @@ body{
   border-top:1px solid #111;
 }
 
-/* ââ NO RESULTS ââ */
+/* ── NO RESULTS ── */
 .empty{
   text-align:center;
   padding:60px 20px;
@@ -481,7 +481,7 @@ body{
 <div class="hero">
   <img class="hero-logo"
     src="https://ironscales.com/hs-fs/hubfs/logo_white.png?width=300&name=logo_white.png"
-    alt="IHONSCALES">
+    alt="IRONSCALES">
   <div class="hero-title" id="promo-name">IRONSCALES CHAMPIONS CUP 2026</div>
   <div class="hero-tagline" id="promo-tagline">Defenders of the Inbox</div>
 </div>
@@ -495,13 +495,13 @@ body{
   <div class="counter-bar-wrap">
     <div class="counter-bar-fill" id="count-bar" style="width:0%"></div>
   </div>
-  <div class="counter-sub">Join the pitch â every inbox counts</div>
+  <div class="counter-sub">Join the pitch — every inbox counts</div>
 </div>
 
 <!-- SEARCH -->
 <div class="search-wrap">
   <input class="search-input" type="text" id="search"
-    placeholder="ð  Search for a company...">
+    placeholder="🔍  Search for a company...">
 </div>
 
 <!-- GROUPS -->
@@ -512,7 +512,7 @@ body{
 <!-- MODAL -->
 <div class="modal-overlay" id="modal" onclick="closeModal(event)">
   <div class="modal">
-    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">â</button>
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
     <div class="modal-logo-wrap">
       <img class="modal-logo" id="modal-logo" src="" alt="">
     </div>
@@ -528,24 +528,24 @@ body{
         Share on LinkedIn
       </a>
       <button class="btn btn-copy" id="modal-copy" onclick="copyLink()">
-        ð Copy Link
+        🔗 Copy Link
       </button>
     </div>
   </div>
 </div>
 
 <!-- FOOTER -->
-<div class="footer">Updated daily Â· All clients are Champions Â· Powered by IRONSCALES</div>
+<div class="footer">Updated daily · All clients are Champions · Powered by IRONSCALES</div>
 
 <script>
-// ââ Helpers ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Helpers ──────────────────────────────────────────────────────
 function hashStr(s){
   let h=0;
   for(let i=0;i<s.length;i++) h=(Math.imul(31,h)+s.charCodeAt(i))|0;
   return Math.abs(h);
 }
 
-// Security rating 87â99 per domain
+// Security rating 87–99 per domain
 function secRating(domain){
   return 87 + (hashStr(domain) % 13);
 }
@@ -565,7 +565,7 @@ function initials(name){
   return name.split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();
 }
 
-// ââ Build Card âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Build Card ───────────────────────────────────────────────────
 function buildCard(team){
   const rating = secRating(team.domain);
   const stats  = secStats(team.domain);
@@ -701,13 +701,13 @@ function buildCard(team){
     card.style.boxShadow = '';
   });
 
-  // click â modal
+  // click → modal
   card.addEventListener('click', ()=> openModal(team, logoSrc));
   wrap.appendChild(card);
   return wrap;
 }
 
-// ââ Modal ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Modal ────────────────────────────────────────────────────────
 let currentDomain = '';
 function openModal(team, logoSrc){
   currentDomain = team.domain;
@@ -728,11 +728,11 @@ function copyLink(){
   const url = location.origin+location.pathname+'#'+currentDomain;
   navigator.clipboard.writeText(url).catch(()=>{});
   const btn = document.getElementById('modal-copy');
-  btn.textContent='â Copied!';
-  setTimeout(()=>btn.textContent='ð Copy Link',2000);
+  btn.textContent='✓ Copied!';
+  setTimeout(()=>btn.textContent='🔗 Copy Link',2000);
 }
 
-// ââ Render groups ââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Render groups ────────────────────────────────────────────────
 let allTeams = [];
 function renderGroups(teams){
   const container = document.getElementById('groups-container');
@@ -750,7 +750,7 @@ function renderGroups(teams){
     block.className = 'group-block';
     const title = document.createElement('div');
     title.className = 'group-title';
-    title.textContent = 'Group '+groupLetter+' â '+chunk.length+' Champion'+(chunk.length>1?'s':'');
+    title.textContent = 'Group '+groupLetter+' | '+chunk.length+' Champion'+(chunk.length>1?'s':'');
     const cards = document.createElement('div');
     cards.className = 'group-cards';
     chunk.forEach(t=> cards.appendChild(buildCard(t)));
@@ -760,7 +760,7 @@ function renderGroups(teams){
   }
 }
 
-// ââ Search âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Search ───────────────────────────────────────────────────────
 document.getElementById('search').addEventListener('input', e=>{
   const q = e.target.value.toLowerCase().trim();
   renderGroups(q ? allTeams.filter(t=>
@@ -769,7 +769,7 @@ document.getElementById('search').addEventListener('input', e=>{
   ) : allTeams);
 });
 
-// ââ Counter ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Counter ──────────────────────────────────────────────────────
 function animateCounter(current, goal){
   const el = document.getElementById('count-current');
   const bar = document.getElementById('count-bar');
@@ -785,7 +785,7 @@ function animateCounter(current, goal){
   document.getElementById('count-goal').textContent = goal.toLocaleString();
 }
 
-// ââ Fetch & init âââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Fetch & init ─────────────────────────────────────────────────
 fetch('./teams.json?v='+Date.now())
   .then(r=>r.json())
   .then(data=>{
@@ -813,7 +813,7 @@ fetch('./teams.json?v='+Date.now())
   })
   .catch(()=>{
     document.getElementById('groups-container').innerHTML =
-      '<div class="empty">Could not load teams â check teams.json</div>';
+      '<div class="empty">Could not load teams — check teams.json</div>';
   });
 </script>
 </body>
